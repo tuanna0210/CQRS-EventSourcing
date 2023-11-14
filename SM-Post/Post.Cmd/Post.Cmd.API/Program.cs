@@ -1,5 +1,8 @@
 using CQRS.Core.Domain;
+using CQRS.Core.Infrastructure;
 using Post.Cmd.Infrastructure.Config;
+using Post.Cmd.Infrastructure.Repositories;
+using Post.Cmd.Infrastructure.Stores;
 
 namespace Post.Cmd.API
 {
@@ -13,7 +16,8 @@ namespace Post.Cmd.API
             //configuration
             builder.Services.Configure<MongoDbConfig>(builder.Configuration.GetSection(nameof(MongoDbConfig)));
 
-            builder.Services.AddScoped<IEventStoreRepository, IEventStoreRepository>();
+            builder.Services.AddScoped<IEventStoreRepository, EventStoreRepository>();
+            builder.Services.AddScoped<IEventStore, EventStore>();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
