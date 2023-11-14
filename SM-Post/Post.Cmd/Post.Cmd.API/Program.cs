@@ -1,3 +1,5 @@
+using Post.Cmd.Infrastructure.Config;
+
 namespace Post.Cmd.API
 {
     public class Program
@@ -7,6 +9,8 @@ namespace Post.Cmd.API
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            //configuration
+            builder.Services.Configure<MongoDbConfig>(builder.Configuration.GetSection(nameof(MongoDbConfig)));
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
