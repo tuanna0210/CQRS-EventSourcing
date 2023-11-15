@@ -1,6 +1,10 @@
 using CQRS.Core.Domain;
+using CQRS.Core.Handlers;
 using CQRS.Core.Infrastructure;
+using Post.Cmd.API.Commands;
+using Post.Cmd.Domain.Aggregates;
 using Post.Cmd.Infrastructure.Config;
+using Post.Cmd.Infrastructure.Handlers;
 using Post.Cmd.Infrastructure.Repositories;
 using Post.Cmd.Infrastructure.Stores;
 
@@ -18,6 +22,8 @@ namespace Post.Cmd.API
 
             builder.Services.AddScoped<IEventStoreRepository, EventStoreRepository>();
             builder.Services.AddScoped<IEventStore, EventStore>();
+            builder.Services.AddScoped<IEventSourcingHandler<PostAggregate>, EventSourcingHandler>();
+            builder.Services.AddScoped<ICommandHandler, CommandHandler>();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
