@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using Post.Query.Infrastructure.DataAccess;
+
 namespace Post.Query.API
 {
     public class Program
@@ -7,6 +10,9 @@ namespace Post.Query.API
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            Action<DbContextOptionsBuilder> configureDbContext = (o => o.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer")));
+            builder.Services.AddDbContext<DatabaseContext>(configureDbContext);
+            builder.Services.AddSingleton<DatabaseContextFactory>(new DatabaseContextFactory(configureDbContext));
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
