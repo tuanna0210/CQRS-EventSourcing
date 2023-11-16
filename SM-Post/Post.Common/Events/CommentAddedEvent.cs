@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Post.Common.Events
 {
-    public class CommendAddedEvent : BaseEvent
+    public class CommentAddedEvent : BaseEvent
     {
-        public CommendAddedEvent() : base(nameof(CommendAddedEvent))
+        public CommentAddedEvent() : base(nameof(CommentAddedEvent))
         {
         }
         public Guid CommentId { get; set; }
