@@ -1,3 +1,4 @@
+using Confluent.Kafka;
 using CQRS.Core.Domain;
 using CQRS.Core.Handlers;
 using CQRS.Core.Infrastructure;
@@ -20,6 +21,7 @@ namespace Post.Cmd.API
             // Add services to the container.
             //configuration
             builder.Services.Configure<MongoDbConfig>(builder.Configuration.GetSection(nameof(MongoDbConfig)));
+            builder.Services.Configure<ProducerConfig>(builder.Configuration.GetSection(nameof(ProducerConfig)));
 
             builder.Services.AddScoped<IEventStoreRepository, EventStoreRepository>();
             builder.Services.AddScoped<IEventStore, EventStore>();
