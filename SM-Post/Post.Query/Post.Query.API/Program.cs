@@ -31,6 +31,7 @@ namespace Post.Query.API
             builder.Services.Configure<ConsumerConfig>(builder.Configuration.GetSection(nameof(ConsumerConfig)));
             builder.Services.AddScoped<IEventConsumer, EventConsumer>();
 
+            builder.Services.AddHostedService<ConsumerHostedService>();
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
