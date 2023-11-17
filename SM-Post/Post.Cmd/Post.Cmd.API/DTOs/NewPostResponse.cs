@@ -1,6 +1,6 @@
 ﻿using Post.Common.DTOs;
 
-namespace Post.Query.API.DTOs
+namespace Post.Cmd.API.DTOs
 {
     public class NewPostResponse : BaseResponse
     {
