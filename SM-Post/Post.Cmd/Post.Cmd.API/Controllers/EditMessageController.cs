@@ -9,18 +9,18 @@ namespace Post.Cmd.API.Controllers
 {
     [ApiController]
     [Route("api/v1/[controller]")]
-    public class EditCommentController: ControllerBase
+    public class EditMessageController: ControllerBase
     {
-        private readonly ILogger<EditCommentController> _logger;
+        private readonly ILogger<EditMessageController> _logger;
         private readonly ICommandDispatcher _commandDispatcher;
 
-        public EditCommentController(ILogger<EditCommentController> logger, ICommandDispatcher commandDispatcher)
+        public EditMessageController(ILogger<EditMessageController> logger, ICommandDispatcher commandDispatcher)
         {
             _logger = logger;
             _commandDispatcher = commandDispatcher;
         }
         [HttpPut("{id}")]
-        public async Task<ActionResult> EditMessageAsync(Guid id, EditCommentCommand command){
+        public async Task<ActionResult> EditMessageAsync(Guid id, EditMessageCommand command){
             try
             {
                 command.Id = id;
@@ -40,7 +40,7 @@ namespace Post.Cmd.API.Controllers
             }
             catch(AggregateNotFoundException ex)
             {
-                _logger.Log(LogLevel.Warning, ex, "Could not retrieve aggregate, client passed an incorrect post id");
+                _logger.Log(LogLevel.Warning, ex, "Could not retrieve aggregate, client passed an incorrect post ID targetting aggregate!");
                 return BadRequest(new BaseResponse()
                 {
                     Message = ex.Message,
