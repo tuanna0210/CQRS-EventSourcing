@@ -31,7 +31,7 @@ namespace Post.Query.API.Controllers
                 return Ok(new PostLookupResponse()
                 {
                     Posts = posts,
-                    Message = $"Successfully returned {count} post${(count > 1 ? "s" : string.Empty)}!"
+                    Message = $"Successfully returned {count} post{(count > 1 ? "s" : string.Empty)}!"
                 });
             }
             catch (Exception ex)
@@ -82,7 +82,7 @@ namespace Post.Query.API.Controllers
                 return Ok(new PostLookupResponse()
                 {
                     Posts = posts,
-                    Message = $"Successfully returned {count} post${(count > 1 ? "s" : string.Empty)}!"
+                    Message = $"Successfully returned {count} post{(count > 1 ? "s" : string.Empty)}!"
                 });
             }
             catch (Exception ex)
@@ -108,7 +108,7 @@ namespace Post.Query.API.Controllers
                 return Ok(new PostLookupResponse()
                 {
                     Posts = posts,
-                    Message = $"Successfully returned {count} post${(count > 1 ? "s" : string.Empty)}!"
+                    Message = $"Successfully returned {count} post{(count > 1 ? "s" : string.Empty)}!"
                 });
             }
             catch (Exception ex)
@@ -122,7 +122,7 @@ namespace Post.Query.API.Controllers
             }
         }
 
-        [HttpGet("withLikes/{numberOfLikes")]
+        [HttpGet("withLikes/{numberOfLikes}")]
         public async Task<ActionResult> GetPostsWithLikesAsync(int numberOfLikes)
         {
             try
@@ -134,7 +134,7 @@ namespace Post.Query.API.Controllers
                 return Ok(new PostLookupResponse()
                 {
                     Posts = posts,
-                    Message = $"Successfully returned {count} post${(count > 1 ? "s" : string.Empty)}!"
+                    Message = $"Successfully returned {count} post{(count > 1 ? "s" : string.Empty)}!"
                 });
             }
             catch (Exception ex)
