@@ -35,7 +35,7 @@ namespace Post.Query.API.Queries
 
         public async Task<List<PostEntity>> HandleAsync(FindPostsWithLikesQuery query)
         {
-            return await _postRepository.ListWithLikesAsync(query.NumberOfLike);
+            return await _postRepository.ListWithLikesAsync(query.NumberOfLikes);
         }
     }
 }
