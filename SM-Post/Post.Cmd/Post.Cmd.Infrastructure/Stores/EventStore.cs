@@ -22,6 +22,17 @@ namespace Post.Cmd.Infrastructure.Stores
             _eventStoreRepository = eventStoreRepository;
             _eventProducer = eventProducer;
         }
+
+        public async Task<List<Guid>> GetAggregateIdsAsync()
+        {
+            var eventStream = await _eventStoreRepository.FindAllAsync();
+            if(eventStream == null || !eventStream.Any())
+            {
+                throw new ArgumentNullException(nameof(eventStream), "Could not retrieve event stream from event store!");
+            }
+            return eventStream.Select(x => x.AggregateIdentifier).Distinct().ToList();
+        }
+
         public async Task<List<BaseEvent>> GetEventsAsync(Guid aggregateId)
         {
             var eventStream = await _eventStoreRepository.FindByAggregateId(aggregateId);
