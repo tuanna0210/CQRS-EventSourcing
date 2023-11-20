@@ -44,7 +44,7 @@ namespace Post.Cmd.Infrastructure.Handlers
                 var events = await _eventStore.GetEventsAsync(aggregateId);
                 foreach(var @event in events)
                 {
-                    _eventProducer.ProduceAsync(topic, @event);
+                    await _eventProducer.ProduceAsync(topic, @event);
                 }    
             }
         }
